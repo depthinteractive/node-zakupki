@@ -1,0 +1,22 @@
+@target=http://localhost:8080
+
+### Get new purchases meta from kontur
+GET {{target}}/kontur/new
+
+### Export new purchases to leads in bitrix
+PUT {{target}}/bitrix/leads/new
+
+### Clean testing
+PATCH {{target}}/bitrix/clean
+
+### Scheduler state
+GET {{target}}/scheduler
+
+### Scheduler start
+GET {{target}}/scheduler/start
+
+### Scheduler stop
+GET {{target}}/scheduler/stop
+
+### Customer story
+GET {{target}}/kontur/story/0274151354

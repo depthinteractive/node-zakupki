@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mongo:
+    image: "mongo:4.2.0-bionic"
+    ports:
+      - "127.0.0.5:27017:27017"
+    volumes:
+      - ./data:/data
+    command: --dbpath /data
+  web:
+    image: "node:12.10.0-alpine"
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/code
+    working_dir: /code
+    environment:
+      MONGO_HOST: mongo
+      KONTUR_LOGIN:
+      KONTUR_PASSWORD:
+    command: [ "sh", "-c", "npm install && npm run build && npm start" ]
+    restart: always
